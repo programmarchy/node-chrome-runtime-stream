@@ -1,0 +1,23 @@
+{
+  "name": "chrome-runtime-stream",
+  "version": "0.0.0",
+  "description": "Streamify the Chrome runtime through the Port object",
+  "keywords": [
+    "chrome",
+    "runtime",
+    "stream"
+  ],
+  "author": "Donald Ness <donald.ness@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/programmarchy/node-chrome-runtime-stream.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "through": "^2.3.6"
+  }
+}

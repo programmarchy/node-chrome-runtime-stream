@@ -1,19 +1,21 @@
-var through = require('through')
+var through = require('through2')
 
 function ChromeRuntimeStream(port) {
-  var stream = through(function write(data) {
-    port.postMessage(data)
+  var stream = through.obj(function (msg, enc, next) {
+    port.postMessage(msg)
+    next()
   },
-  function end() {
-    stream.queue(null)
+  function (done) {
+    port.disconnect()
+    done()
   })
 
   port.onMessage.addListener(function (msg) {
-    stream.queue(msg)
+    stream.push(msg)
   })
 
   port.onDisconnect.addListener(function () {
-    stream.queue(null)
+    stream.end()
   })
 
   return stream
